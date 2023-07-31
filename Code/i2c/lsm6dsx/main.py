@@ -1,3 +1,5 @@
+#for calibrating the value of gyrometer in a loop in lsm6dsx in .py
+
 import smbus
 
 LSM6DSx_ADDRESS = 0x6B

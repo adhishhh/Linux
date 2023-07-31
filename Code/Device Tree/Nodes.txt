@@ -1,0 +1,67 @@
+1.WM8904: 
+
+ 
+
+wm8904@1a {  
+
+compatible = "wlf,wm8904";  
+
+reg = <0x1a>;  
+
+};  
+
+ 
+https://patchwork.kernel.org/project/alsa-devel/patch/20220307141041.27538-3-alifer.m@variscite.com/ 
+
+ 
+
+https://lore.kernel.org/lkml/YrCOaW%2FK6muNnyRf@sirena.org.uk/T/ 
+
+ 
+
+https://stackoverflow.com/questions/72797029/how-to-add-device-tree-node-for-i2c-device-pcf8574a 
+
+ 
+
+2. 
+
+ 
+
+tps25750@2a { 
+
+ compatible = "ti,tps25750";  
+
+ reg = <0x2a>; // Other properties specific to TPS25750DRJKR  
+
+}; 
+
+ 
+
+3. BQ25792RQMR 
+
+ 
+
+bq25792rqmr { 
+
+compatible = "ti, bq25792rqmr"; 
+
+reg = <0x6a>; 
+
+interrupt-parent = <& gpio1>; 
+
+interrupts = <16 IRQ_TYPE_EDGE_BOTH>;  
+
+pg-gpios = <& gpio1 28 GPIO_ACTIVE_HIGH>; 
+
+ti, battery-regulation-voltage = <4200000>; 
+
+ti, charge-current = <1000000>; 
+
+ti, termination-current = <50000>; 
+
+}; 
+ 
+
+ 
+
+ 

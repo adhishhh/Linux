@@ -1,0 +1,95 @@
+-wifi-
+1.
+To start using Wi-Fi add your network credentials into the following file:
+/etc/wpa_supplicant.conf
+2.
+Add the network name into ssid field, password into psk field and key into the key_mgmt field (if your network uses key management).
+The file should have the following content:
+ctrl_interface=/var/run/wpa_supplicant
+ctrl_interface_group=0
+update_config=1
+  network={
+      ssid="<the name of your internet acces point>"
+      key_mgmt=WPA-PSK
+      psk="<the password of your internet access point>"
+   }
+3.
+Execute the following commands to connect to the network:
+wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf -D nl80211
+udhcpc -i wlan0
+
+-gstreamer-
+1.
+Execute the following command to check all the source options:
+gst-inspect-1.0 | grep source
+2.
+Execute the following command to check all the sink options:
+gst-inspect-1.0 | grep sink
+
+-video capturing-
+1.
+The following command should be used to start video capturing:
+gst-launch-1.0 -v v4l2src ! vpuenc_h264 ! filesink location=1.mov
+Where 1.mov is name and extension of the file.
+
+-video streaming-
+1.
+The following command should be executed on UCM-iMX8M-Mini to start video streaming:
+gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw, width=640, height=480 ! jpegenc ! udpsink host=127.0.0.1 port=1234
+127.0.0.1 is the IP address of the host PC, and 1234 is the host PC port.
+2.
+The following command should be executed on host PC (Linux) to receive the video stream:
+gst-launch-1.0 udpsrc port=1234 ! jpegdec ! autovideosink
+1234 is the host PC port. 
+
+-suspend/resume-
+1.
+The following command should be used to enter suspend mode:
+echo mem >/sys/power/state
+
+-cpu freq-
+Changing the scaling governor
+1.
+Execute the following command to change the scaling governor:
+echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+2.
+Execute the following command to see available scaling governors:
+cat /sys/devices/system/cpu/cpufreq/policy0/scaling_available_governors
+3.
+Execute the following command to see current scaling governor:
+cat /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+
+-change cpu freq-
+sudo echo userspace > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+1.
+Execute the following command to set CPU frequency:
+echo 1200000 > /sys/devices/system/cpu/cpufreq/policy0/scaling_setspeed
+2.
+Execute the following command to see available CPU frequencies:
+cat /sys/devices/system/cpu/cpufreq/policy0/scaling_available_frequencies
+3.
+Execute the following command to see current CPU frequency:
+cat /sys/devices/system/cpu/cpufreq/policy0/cpuinfo_cur_freq
+
+-cpu temerature-
+cat /sys/class/thermal/thermal_zone0/temp
+
+-real time clock-rtc-
+1.
+Execute the following command to set the date and write it into the RTC:
+root@ucm-imx8m-mini:~# date -s "12 SEP 2019 10:00:00"
+Thu Sep 12 10:00:00 UTC 2019
+root@ucm-imx8m-mini:~# /sbin/hwclock --systohc
+root@ucm-imx8m-mini:~# hwclock –w
+2.
+Execute the following command to read the RTC time and date:
+root@ucm-imx8m-mini:~# hwclock
+Thu Sep 12 10:00:48 2019  0.000000 seconds
+
+-device sr.no and config-
+1.
+To read the product serial number, issue the folowing command:
+root@ucm-imx8m-mini:~# cat /proc/device-tree/product-sn
+2.
+To read the product configuration part number, issue the following command:
+root@ucm-imx8m-mini:~# cat /proc/device-tree/product-options

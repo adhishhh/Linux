@@ -1,0 +1,6 @@
+Balena (.deb) for ubuntu ;( in case you did not find it over the net ...
+                           
+0>download the .deb file
+1>ls
+2>cd Downloads/
+3>sudo dpkg -i balena-etcher_1.18.11_amd64.deb

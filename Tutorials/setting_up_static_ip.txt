@@ -1,0 +1,36 @@
+to set up static ip in using kernel in linux
+
+#open up the terminal
+1->ctrl+shift+t
+
+#represent ip information
+2->ip a
+
+3->ifconfig -a
+
+#check the relevant port
+4->eth0
+
+#make directories for test
+5->mkdir etc->mkdir netplan
+
+#make .yaml file
+6->using the text editor in ubuntu and save the file as .yaml with test configs as::
+
+network:
+	version:2
+	renderer: NetworkManager
+	ethernets:
+		eth0:
+			dhcp4: no
+			addresses: []
+			gateway4: 192.168.64.111
+			nameserver:
+				addresses: [8.8.8.8,8.8.8.4]
+
+#run the test netplan using 
+7->sudo netplan try 
+
+8->ip a
+
+   	

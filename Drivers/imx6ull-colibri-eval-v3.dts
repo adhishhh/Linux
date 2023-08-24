@@ -1,0 +1,94 @@
+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+/*
+ * Copyright 2018-2021 Toradex
+ */
+
+/dts-v1/;
+
+
+#include "imx6ull-colibri.dtsi"      	 //kartikeya
+#include "imx6ull-colibri-nonwifi.dtsi"
+#include "imx6ull-colibri-eval-v3.dtsi"
+
+/ {
+	model = "Toradex Colibri iMX6ULL 256MB on Colibri Evaluation Board V3"; 
+	compatible = "toradex,colibri-imx6ull-eval",				
+		     "toradex,colibri-imx6ull",					
+		     "fsl,imx6ull";					
+
+	clocks {
+		mclk: mclk {
+			compatible = "fixed-clock";
+			#clock-cells = <0>;
+			clock-frequency = <12288000>;
+		};
+	};
+
+	sound {
+		compatible = "fsl,imx6ul-evk-wm8904",
+			   "fsl,imx-audio-wm8904";
+		model = "wm8904-audio";
+		cpu-dai = <&sai2>;
+		audio-codec = <&codec>;
+		asrc-controller = <&asrc>;
+		gpr = <&gpr>;
+		audio-routing =
+			"Headphone Jack", "HPOUTL",
+			"Headphone Jack", "HPOUTR",
+			"IN2L", "Line In Jack",
+			"IN2R", "Line In Jack",
+			"Mic Jack", "MICBIAS",
+			"IN1L", "Mic Jack";
+    };
+};
+
+&spidev0 {
+	status = "okay";
+};
+
+&i2c1 {
+	clock-frequency = <400000>;
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_i2c1>;
+	status = "okay";
+
+	codec: wm8904@1a {
+		compatible = "wlf,wm8904";
+		reg = <0x1a>;
+		clocks = <&clks IMX6UL_CLK_SAI2>;
+		clock-names = "mclk";
+	};
+};
+
+&iomuxc {
+	imx6ull-colibri {
+		pinctrl_sai2: sai2grp {
+			fsl,pins = <
+				MX6UL_PAD_JTAG_TDI__SAI2_TX_BCLK	0x17088
+				MX6UL_PAD_JTAG_TDO__SAI2_TX_SYNC	0x17088
+				MX6UL_PAD_JTAG_TRST_B__SAI2_TX_DATA	0x11088
+				MX6UL_PAD_JTAG_TCK__SAI2_RX_DATA	0x11088
+				MX6UL_PAD_JTAG_TMS__SAI2_MCLK		0x17088
+			>;
+		};
+		pinctrl_htrc: htrcgrp {
+			fsl,pins = <
+				MX6UL_PAD_ENET1_TX_CLK__GPIO2_IO06 0x74
+				MX6UL_PAD_CSI_DATA07__GPIO4_IO28	0x74
+				MX6UL_PAD_CSI_DATA04__GPIO4_IO25	0x74
+			>;
+		};
+	};
+};
+
+&sai2 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_sai2>;
+
+	assigned-clocks = <&clks IMX6UL_CLK_SAI2_SEL>,
+			  <&clks IMX6UL_CLK_SAI2>;
+	assigned-clock-parents = <&clks IMX6UL_CLK_PLL4_AUDIO_DIV>;
+	assigned-clock-rates = <0>, <12288000>;
+
+	status = "okay";
+};

@@ -1,0 +1,165 @@
+/*
+* Copyright (C) 2021 Upverter, Inc. - https://modular.upverter.com/
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License version 2 or
+* (at your option) any later version as published by the Free Software
+* Foundation.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+*/
+/dts-v1/;
+
+#define INPUT 0x1c4
+#define OUTPUT 0x184
+#define PIN_INPUT INPUT
+#define PIN_OUTPUT OUTPUT
+#define PIN_INPUT_PULLUP 0x1c6
+#define PIN_OUTPUT_PULLUP 0x186
+#define INPUT_SDHC 0x1d0
+#define OUTPUT_SDHC 0x190
+#define IO_I2C 0x400001c6
+
+#include "imx8mm-verdin.dtsi"
+#include "imx8mm-verdin-wifi.dtsi"
+#include "imx8mm-verdin-dev.dtsi"
+
+/ {
+	model = "Toradex Verdin iMX8MM on Upverter Verdin V4";
+	compatible = "toradex,verdin-imx8mm-wifi-dev", "toradex,verdin-imx8mm-wifi", "fsl,imx8mm";
+
+	ecspi@30830000 {
+		/delete-node/ spidev@0;
+	};
+
+		buttons {
+		pinctrl-names = "default";
+		pinctrl-0 = <&buttons_default>;
+		#size-cells = <0>;
+		#address-cells = <1>;
+		compatible = "gpio-keys";
+		status = "okay";
+		type = "button";
+		
+		button_0 {
+			label = "button_0";
+			#size-cells = <0>;
+			#address-cells = <1>;
+			linux,code = <187>;
+			status = "okay";
+			type = "button";
+			gpios = <&gpio5 27 GPIO_ACTIVE_LOW>;
+			gpio-key,wakeup;
+
+			};
+	};
+
+
+};
+
+&iomuxc {
+	pinctrl-0 = <&pinctrl_sai5>, <&pinctrl_vselect>;
+	pinctrl_vselect: vselectgrp {
+		fsl,pins = < MX8MM_IOMUXC_GPIO1_IO04_USDHC2_VSELECT  0x1d0 >;
+	};
+};
+
+
+// i2c_buses device
+
+&i2c4 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&i2c4_default>;
+	status = "okay";
+};
+&i2c3 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&i2c3_default>;
+	status = "okay";
+
+	bmi_gyro: bmi_gyro@69 {
+		reg = <105>;
+		status = "okay";
+		compatible = "bosch,bmi055_gyro";
+
+		interrupt-parent = <&gpio5>;
+		interrupts =<5 0>;
+
+		};
+
+	bmi_accel: bmi_accel@18 {
+		reg = <24>;
+		status = "okay";
+		compatible = "bosch,bmi055_accel";
+
+		interrupt-parent = <&gpio3>;
+		interrupts =<4 0>;
+
+		};
+};
+
+// uart3 device
+
+&uart1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart1_default>;
+	status = "okay";
+};
+
+// spi_buses device
+
+&ecspi2 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&ecspi2_default>;
+	cs-gpios = <&gpio5 13 1>,
+<&gpio3 2 1>;
+	status = "okay";
+};
+
+
+&uart4 {
+	status = "disabled";
+};
+
+
+
+&iomuxc {
+	buttons_default: buttonsgrp {
+		fsl,pins = <
+			MX8MM_IOMUXC_UART3_TXD_GPIO5_IO27 INPUT /* uart3_txd.gpio5_io27 */
+		>;
+	};
+	i2c4_default: i2c4grp {
+		fsl,pins = <
+			MX8MM_IOMUXC_I2C4_SCL_I2C4_SCL IO_I2C /* i2c4_scl.i2c4_scl */
+			MX8MM_IOMUXC_I2C4_SDA_I2C4_SDA IO_I2C /* i2c4_sda.i2c4_sda */
+		>;
+	};
+	uart1_default: uart1grp {
+		fsl,pins = <
+			MX8MM_IOMUXC_SAI2_RXFS_UART1_TX OUTPUT /* sai2_rxfs.uart1_tx */
+			MX8MM_IOMUXC_SAI2_RXC_UART1_RX INPUT /* sai2_rxc.uart1_rx */
+		>;
+	};
+	ecspi2_default: ecspi2grp {
+		fsl,pins = <
+			MX8MM_IOMUXC_ECSPI2_SCLK_ECSPI2_SCLK OUTPUT /* ecspi2_sclk.ecspi2_sclk */
+			MX8MM_IOMUXC_ECSPI2_MOSI_ECSPI2_MOSI OUTPUT /* ecspi2_mosi.ecspi2_mosi */
+			MX8MM_IOMUXC_ECSPI2_MISO_ECSPI2_MISO INPUT /* ecspi2_miso.ecspi2_miso */
+			MX8MM_IOMUXC_ECSPI2_SS0_ECSPI2_SS0 OUTPUT /* ecspi2_ss0.ecspi2_ss0 */
+			MX8MM_IOMUXC_NAND_CE1_B_GPIO3_IO2 PIN_OUTPUT /* nand_ce1_b.gpio3_io2 */
+		>;
+	};
+	i2c3_default: i2c3grp {
+		fsl,pins = <
+			MX8MM_IOMUXC_I2C3_SCL_I2C3_SCL IO_I2C /* i2c3_scl.i2c3_scl */
+			MX8MM_IOMUXC_SPDIF_EXT_CLK_GPIO5_IO5 INPUT /* spdif_ext_clk.gpio5_io5 */
+			MX8MM_IOMUXC_I2C3_SDA_I2C3_SDA IO_I2C /* i2c3_sda.i2c3_sda */
+			MX8MM_IOMUXC_NAND_CE3_B_GPIO3_IO4 INPUT /* nand_ce3_b.gpio3_io4 */
+		>;
+	};
+};

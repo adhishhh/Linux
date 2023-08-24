@@ -1,0 +1,23 @@
+bat:battery
+{
+
+    compatible = "simple-battery" ;
+    constant-charge-current-max-microamp = <2040000> ;
+    constant-charge-voltage-max-microamp = <4352000> ;
+    precharge-curret-microamp = <180000> ;
+    charge-term-curret-microamp = <180000> ;
+
+} ;
+
+charge@6b
+{
+
+    compatible = "ti,bq25790" ;
+    reg = <0x6b> ;
+    monitored-battery = <&bat> ;
+    ti,watchdog-timeout-ms = <40000> ;
+
+    input-voltage-limit-microvolt = <4500000> ;
+    input-current-limit-microamp = <2400000> ;
+
+} ;

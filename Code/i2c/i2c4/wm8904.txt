@@ -1,0 +1,17 @@
+&i2c4 {
+    status = "okay";
+    
+    /* Audio Codec */
+    wm8904_1a: codec@1a {
+        compatible = "wlf,wm8904";
+        AVDD-supply = <&reg_3p3v>;
+        clocks = <&clk IMX8MM_CLK_SAI2_ROOT>;
+        clock-names = "mclk";
+        CPVDD-supply = <&reg_3p3v>;
+        DBVDD-supply = <&reg_3p3v>;
+        DCVDD-supply = <&reg_3p3v>;
+        MICVDD-supply = <&reg_3p3v>;
+        reg = <0x1a>;
+        #sound-dai-cells = <0>;
+    };
+};

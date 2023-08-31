@@ -1,17 +1,70 @@
-&i2c4 {
-    status = "okay";
-    
-    /* Audio Codec */
-    wm8904_1a: codec@1a {
-        compatible = "wlf,wm8904";
-        AVDD-supply = <&reg_3p3v>;
-        clocks = <&clk IMX8MM_CLK_SAI2_ROOT>;
-        clock-names = "mclk";
-        CPVDD-supply = <&reg_3p3v>;
-        DBVDD-supply = <&reg_3p3v>;
-        DCVDD-supply = <&reg_3p3v>;
-        MICVDD-supply = <&reg_3p3v>;
-        reg = <0x1a>;
-        #sound-dai-cells = <0>;
+sound-wm8904 {
+        compatible = "simple-audio-card";
+        simple-audio-card,bitclock-master = <&dailink_master>;
+        simple-audio-card,format = "i2s";
+        simple-audio-card,frame-master = <&dailink_master>;
+        simple-audio-card,name = "wm8904-audio";
+        simple-audio-card,routing =
+            "Headphone Jack", "HPOUTL",
+            "Headphone Jack", "HPOUTR",
+            "IN2L", "Line In Jack",
+            "IN2R", "Line In Jack",
+            "IN1L", "Microphone Jack",
+            "IN1R", "Microphone Jack";
+        simple-audio-card,widgets =
+            "Microphone", "Microphone Jack",
+            "Headphone", "Headphone Jack",
+            "Line", "Line In Jack";
+        simple-audio-card,mclk-fs = <256>;
+
+ 
+
+        dailink_master: simple-audio-card,codec {
+            sound-dai = <&wm8904>;
+        };
+
+ 
+
+        simple-audio-card,cpu {
+            sound-dai = <&sai3>;
+        };
     };
-};
+
+//
+Simple-Card:
+
+Simple-Card specifies audio DAI connections of SoC <-> codec.
+
+Required properties:
+
+- compatible				: "simple-audio-card"
+
+Optional properties:
+
+- simple-audio-card,name		: User specified audio sound card name, one string
+					  property.
+- simple-audio-card,widgets		: Please refer to widgets.txt.
+- simple-audio-card,routing		: A list of the connections between audio components.
+					  Each entry is a pair of strings, the first being the
+					  connection's sink, the second being the connection's
+					  source.
+- simple-audio-card,mclk-fs             : Multiplication factor between stream rate and codec
+					  mclk. When defined, mclk-fs property defined in
+					  dai-link sub nodes are ignored.
+- simple-audio-card,hp-det-gpio		: Reference to GPIO that signals when
+					  headphones are attached.
+- simple-audio-card,mic-det-gpio	: Reference to GPIO that signals when
+					  a microphone is attached.
+- simple-audio-card,aux-devs		: List of phandles pointing to auxiliary devices, such
+					  as amplifiers, to be added to the sound card.
+- simple-audio-card,pin-switches	: List of strings containing the widget names for
+					  which pin switches must be created.
+
+Optional subnodes:
+
+- simple-audio-card,dai-link		: Container for dai-link level
+					  properties and the CPU and CODEC
+					  sub-nodes. This container may be
+					  omitted when the card has only one
+					  DAI link. See the examples and the
+					  section below.

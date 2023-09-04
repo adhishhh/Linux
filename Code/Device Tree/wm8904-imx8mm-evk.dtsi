@@ -1,0 +1,74 @@
+//adhishvairagade
+//wm8904 in imx8mmini_evk.dtsi
+
+{
+    sound-wm8904 {
+        compatible = "simple-audio-card";
+        sound-dai = <&sai3>;
+        simple-audio-card,name = "wm8904-audio";
+        simple-audio-card,format = "i2s";  // i2s
+        //audio-cpu = <&sai3>;  
+        simple-audio-card,frame-master = <&dailink>;
+        simple-audio-card,bitclock-master = <&dailink>;
+        simple-audio-card,widgets =
+            "Headphone", "Headphone Jack",
+            "Line", "Line Out Jack",
+            "Microphone", "Microphone Jack",
+            "Line", "Line In Jack";
+        simple-audio-card,routing =
+            "Line Out Jack", "LINEOUTL",
+            "Line Out Jack", "LINEOUTR",
+            "Headphone Jack", "HPOUTL",
+            "Headphone Jack", "HPOUTR",
+            //"IN1L", "Microphone Jack",
+            //"IN1R", "Line In Jack",
+            "IN2L", "Microphone Jack",
+            "IN2R", "Microphone Jack",
+            "Microphone Jack", "MICBIAS";
+        simple-audio-card,mclk-fs = <256>;
+        dailink: simple-audio-card,cpu {
+            
+        };
+
+        simple-audio-card,codec {
+            sound-dai = <&wm8904>;
+            clocks = <&clk IMX8MM_CLK_SAI3_ROOT>;
+        };
+    };
+};
+
+&i2c2{
+    clock-frequency = <400000>;
+    pinctrl-names = "default";
+    pinctrl-0 = <&pinctrl_i2c2>;
+    status = "okay";
+    clock-frequency = <100000>;
+
+    wm8904: audio-codec {      // Audio Codec
+        compatible = "wlf,wm8904";
+  //      pinctrl-names = "default";
+      //  pinctrl-0 = <&pinctrl_gpio_wlf>;
+        reg = <0x1a>;
+        #sound-dai-cells = <0>;
+        pinctrl-0=<&pinctrl_i2c2>;
+        clocks = <&clk IMX8MM_CLK_SAI3_ROOT>;
+        clock-names = "mclk";
+        wlf,shared-lrclk;  //changes
+    //    wlf,mute-gpios = <&gpio5 21 GPIO_ACTIVE_LOW>;
+        wlf,hp-cfg = <3 2 3>;//l/r and common mode voltage
+        status="okay";
+    };
+
+
+&sai3 {
+    pinctrl-names = "default";
+    pinctrl-0 = <&pinctrl_sai3>;
+    assigned-clocks = <&clk IMX8MM_CLK_SAI3>;
+    assigned-clock-parents = <&clk IMX8MM_AUDIO_PLL2_OUT>;
+    assigned-clock-rates = <12288000>; //12880000, ``24576000, 22579200, 49152000
+    clocks = <&clk IMX8MM_CLK_SAI3_IPG>, <&clk IMX8MM_CLK_DUMMY>,<&clk IMX8MM_CLK_SAI3_ROOT>, <&clk IMX8MM_CLK_DUMMY>,<&clk IMX8MM_CLK_DUMMY>;
+    clock-names = "bus", "mclk0", "mclk1", "mclk2", "mclk3";
+    fsl,sai-mclk-direction-output;
+    pinctrl-names = "default";
+    status = "okay";
+};

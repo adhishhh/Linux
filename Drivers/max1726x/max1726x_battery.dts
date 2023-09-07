@@ -1,0 +1,45 @@
+/dts-v1/;
+/plugin/;
+
+/* Diskio PI project - device tree for the fuel gauge */
+
+
+/{
+
+        compatible = "brcm,bcm2708";
+        fragment@0 {
+                   target = <&i2c1>;
+                   __overlay__ {
+                               status = "okay";
+                               #address-cells = <1>;
+                               #size-cells = <0>;
+                               MAX1726x@36 {
+                                        compatible = "maxim,MAX1726x";
+                                        reg = <0x36>;
+                                        interrupt-parent = <&gpio>;
+                                        interrupts = <4 2>;
+                                        rsense          = <10>;     /* miliOhm */
+                                        clock-frequency = <400000>;
+                                        model-option    = <1>;      /* Model 1, 2 or 3*/
+                                        talrt-min   = <0>;          /* DegreeC */
+                                        talrt-max   = <50>;         /* DegreeC */
+                                        valrt-min   = <7600>;       /* mV */
+                                        valrt-max   = <8500>;       /* mV */
+                                        salrt-min   = <1>;          /* Percent */
+                                        salrt-max   = <99>;         /* Percent */
+                                        ialrt-min   = <(-2500)>;    /* mA */
+                                        ialrt-max   = <2500>;       /* mA */
+
+
+                                        /*** INI parameters ***/
+                                        /* Option 1/2/3 */
+                                        designcap   = /bits/ 16 <0xFA0>; /* 4000 mAh was 2E00=12000 mAh */
+                                        ichgterm    = /bits/ 16 <0x0640>;
+                                        vempty      = /bits/ 16 <0xA561>; /* 3300 mV */
+                                        vcharge     = <8400>; /* mV */
+
+
+                                        };
+                              };
+                };
+};

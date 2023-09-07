@@ -1,0 +1,7 @@
+There are many sources accessible for the fuel gauge driver code of IMX17262. 
+The Maxim ModelGauge m5 algorithm is implemented by the MAX17262, an ultra-low power fuel gauge IC. 
+The IC keeps track of a single-cell battery pack and provides recommendations and sample code for software drivers. 
+A thread on the Raspberry Pi forums is dedicated to the fuel gauge device tree/driver integration issue. 
+The Fuel Gauge Device Driver API is part of the Zephyr Project. 
+Additionally, the rpi-4.4.y development has a Linux 4.4 driver for the fuel gauge ICs in the bq27xxx series. 
+You can find discussion of the node library for the I2C Maxim Fuel Gauge MAX17055 and MAX17261 in a forum thread.

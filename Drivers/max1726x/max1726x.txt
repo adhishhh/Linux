@@ -1,3 +1,4 @@
+//adhishvairagade
 There are many sources accessible for the fuel gauge driver code of IMX17262. 
 The Maxim ModelGauge m5 algorithm is implemented by the MAX17262, an ultra-low power fuel gauge IC. 
 The IC keeps track of a single-cell battery pack and provides recommendations and sample code for software drivers. 

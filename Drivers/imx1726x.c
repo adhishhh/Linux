@@ -1,3 +1,4 @@
+//device tree
 /dts-v1/;
 /plugin/;
 

@@ -67,12 +67,12 @@ struct bq25790_device {
 };
 
 static struct reg_default bq25790_reg_defs[] = {
-	{BQ25790_INPUT_V_LIM, 0x24},//
-	{BQ25790_INPUT_I_LIM_MSB, 0x01},//
-	{BQ25790_INPUT_I_LIM_LSB, 0x2c},//
+	{BQ25790_INPUT_V_LIM, 0x24},
+	{BQ25790_INPUT_I_LIM_MSB, 0x01},
+	{BQ25790_INPUT_I_LIM_LSB, 0x2c},
 	{BQ25790_PRECHRG_CTRL, 0xc3},
 	{BQ25790_TERM_CTRL, 0x5},
-	{BQ25790_VOTG_REG, 0xdc},//
+	{BQ25790_VOTG_REG, 0xdc},
 	{BQ25790_IOTG_REG, 0x4b},
 	{BQ25790_TIMER_CTRL, 0x3d},
 	{BQ25790_CHRG_CTRL_0, 0xa2},
@@ -410,7 +410,7 @@ static int bq25790_set_input_volt_lim(struct bq25790_device *bq, int vindpm)
 	if (vindpm < BQ25790_VINDPM_V_MIN_uV ||
 	    vindpm > BQ25790_VINDPM_V_MAX_uV)
  		return -EINVAL;
-
+ 
 	vlim = vindpm / BQ25790_VINDPM_STEP_uV;
 
 	vlim_msb = (vlim >> 8) & 0xff;
@@ -909,7 +909,7 @@ static bool bq25790_is_volatile_reg(struct device *dev, unsigned int reg)
 	case BQ25790_ICO_I_LIM...BQ25790_FAULT_FLAG_1:
 	case BQ25790_ADC_CTRL...BQ25790_ADC_DM:
 	case BQ25790_CHRG_CTRL_0:
-
+	
 		return true;
 	default:
 		return false;
@@ -956,7 +956,7 @@ static int bq25790_hw_init(struct bq25790_device *bq)
 	int wd_reg_val = BQ25790_WATCHDOG_DIS;
 	int i;
 
-	struct power_supply_battery_info bat_info = { };
+	struct power_supply_battery_info *bat_info;
 
 	if (bq->watchdog_timer) {
 		for (i = 0; i < BQ25790_NUM_WD_VAL; i++) {
@@ -969,7 +969,7 @@ static int bq25790_hw_init(struct bq25790_device *bq)
 	ret = regmap_update_bits(bq->regmap, BQ25790_CHRG_CTRL_1,
 				 BQ25790_WATCHDOG_MASK, wd_reg_val);
 
-	ret = power_supply_get_battery_info(bq->charger, &bat_info);
+	ret = power_supply_get_battery_info(bq->charger, &bat_info);//error
 	if (ret) {
 		dev_warn(bq->dev, "battery info missing, default values will be applied\n");
 
@@ -997,7 +997,7 @@ static int bq25790_hw_init(struct bq25790_device *bq)
 			bat_info.constant_charge_voltage_max_uv;
 	}
 
-	ret = bq25790_set_ichrg_curr(bq,
+	ret = bq25790_set_ichrg_curr(bq, 
 				bat_info.constant_charge_current_max_ua);
 	if (ret)
 		goto err_out;

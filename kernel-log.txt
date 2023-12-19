@@ -1,0 +1,737 @@
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
+[    0.000000] Linux version 5.10.72-dirty (dmatek@dma1804) (Android (7284624, based on r416183b) clang version 12.0.5 (https://android.googlesource.com/toolchain/llvm-project c935d99d7cf2016289302412d708641d52d2f7ee), LLD 12.0.5 (/buildbot/src/android/llvm-toolchain/out/llvm-project/lld c935d99d7cf2016289302412d708641d52d2f7ee)) #27 SMP PREEMPT Sat May 6 16:00:47 CST 2023
+[    0.000000] Machine model: NXP i.MX8MPlus EVK board
+[    0.000000] Stack Depot is disabled
+[    0.000000] efi: UEFI not found.
+[    0.000000] Reserved memory: created DMA memory pool at 0x0000000094300000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node vdev0buffer@94300000, compatible id shared-dma-pool
+[    0.000000] NUMA: No NUMA configuration found
+[    0.000000] NUMA: Faking a node at [mem 0x0000000040000000-0x000000013fffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0x13f83c680-0x13f83efff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000040000000-0x00000000ffffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   [mem 0x0000000100000000-0x000000013fffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000040000000-0x00000000823fffff]
+[    0.000000]   node   0: [mem 0x0000000082400000-0x00000000943fffff]
+[    0.000000]   node   0: [mem 0x0000000094400000-0x00000000944fffff]
+[    0.000000]   node   0: [mem 0x0000000094500000-0x000000009450ffff]
+[    0.000000]   node   0: [mem 0x0000000094510000-0x000000013fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x000000013fffffff]
+[    0.000000] cma: Reserved 960 MiB at 0x00000000a4000000
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: MIGRATE_INFO_TYPE not supported.
+[    0.000000] psci: SMC Calling Convention v1.2
+[    0.000000] percpu: Embedded 33 pages/cpu s97624 r8192 d29352 u135168
+[    0.000000] Detected VIPT I-cache on CPU0
+[    0.000000] CPU features: detected: ARM erratum 845719
+[    0.000000] CPU features: detected: GIC system register CPU interface
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 1032192
+[    0.000000] Policy zone: Normal
+[    0.000000] Kernel command line: stack_depot_disable=on kasan.stacktrace=off console=ttymxc1,115200 init=/init androidboot.console=ttymxc1 androidboot.hardware=nxp firmware_class.path=/vendor/firmware loop.max_part=7 transparent_hugepage=never swiotlb=65536 androidboot.lcd_density=240 androidboot.primary_display=imx-drm androidboot.wificountrycode=CN moal.mod_para=wifi_mod_para.conf cma=960M@0x400M-0x1000M androidboot.vendor.sysrq=1 buildvariant=userdebug androidboot.serialno=0b1e8000ffbaf416 androidboot.btmacaddr=0b:1e:80:00:ff:ba androidboot.soc_type=imx8mp androidboot.boot_device_root=mmcblk2 androidboot.boottime=1BLL:0,1BLE:6508,KL:0,KD:0,AVB:1567,ODT:0,SW:0 androidboot.bootreason=cold,powerkey androidboot.dtbo_idx=0 androidboot.keystore=software androidboot.verifiedbootstate=green androidboot.flash.locked=1 androidboot.slot_suffix=_a androidboot.vbmeta.device=PARTUUID=ec6d6e56-69bb-4530-9546-034436ca4822 androidboot.vbmeta.avb_version=1.1 androidboot.vbmeta.device_state=locked andr
+[    0.000000] Dentry cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] software IO TLB: mapped [mem 0x00000000f7fff000-0x00000000fffff000] (128MB)
+[    0.000000] Memory: 2390172K/4194304K available (22720K kernel code, 2678K rwdata, 12400K rodata, 1472K init, 979K bss, 821092K reserved, 983040K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=4.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=4
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: GIC: Using split EOI/Deactivate mode
+[    0.000000] GICv3: 160 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] GICv3: Distributor has no Range Selector support
+[    0.000000] GICv3: 16 PPIs implemented
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x0000000038880000
+[    0.000000] ITS: No ITS available, not enabling LPIs
+[    0.000000] kfence: initialized - using 2097152 bytes for 255 objects at 0x(____ptrval____)-0x(____ptrval____)
+[    0.000000] random: get_random_bytes called from start_kernel+0x1dc/0x454 with crng_init=0
+[    0.000000] arch_timer: cp15 timer(s) running at 8.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x1d854df40, max_idle_ns: 440795202120 ns
+[    0.000004] sched_clock: 56 bits at 8MHz, resolution 125ns, wraps every 2199023255500ns
+[    0.000485] Console: colour dummy device 80x25
+[    0.000561] Calibrating delay loop (skipped), value calculated using timer frequency.. 16.00 BogoMIPS (lpj=32000)
+[    0.000574] pid_max: default: 32768 minimum: 301
+[    0.000653] LSM: Security Framework initializing
+[    0.000682] SELinux:  Initializing.
+[    0.000761] Mount-cache hash table entries: 8192 (order: 4, 65536 bytes, linear)
+[    0.000782] Mountpoint-cache hash table entries: 8192 (order: 4, 65536 bytes, linear)
+[    0.002532] rcu: Hierarchical SRCU implementation.
+[    0.004255] EFI services will not be available.
+[    0.004494] smp: Bringing up secondary CPUs ...
+[    0.005038] Detected VIPT I-cache on CPU1
+[    0.005060] GICv3: CPU1: found redistributor 1 region 0:0x00000000388a0000
+[    0.005096] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
+[    0.005654] Detected VIPT I-cache on CPU2
+[    0.005670] GICv3: CPU2: found redistributor 2 region 0:0x00000000388c0000
+[    0.005692] CPU2: Booted secondary processor 0x0000000002 [0x410fd034]
+[    0.006242] Detected VIPT I-cache on CPU3
+[    0.006257] GICv3: CPU3: found redistributor 3 region 0:0x00000000388e0000
+[    0.006277] CPU3: Booted secondary processor 0x0000000003 [0x410fd034]
+[    0.006354] smp: Brought up 1 node, 4 CPUs
+[    0.006379] SMP: Total of 4 processors activated.
+[    0.006388] CPU features: detected: 32-bit EL0 Support
+[    0.006395] CPU features: detected: CRC32 instructions
+[    0.006403] CPU features: detected: 32-bit EL1 Support
+[    0.006456] CPU features: emulated: Privileged Access Never (PAN) using TTBR0_EL1 switching
+[    0.020868] CPU: All CPU(s) started at EL2
+[    0.020899] alternatives: patching kernel code
+[    0.022815] devtmpfs: initialized
+[    0.035134] Registered cp15_barrier emulation handler
+[    0.035154] Registered setend emulation handler
+[    0.035164] KASLR disabled due to lack of seed
+[    0.035342] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.035356] futex hash table entries: 1024 (order: 4, 65536 bytes, linear)
+[    0.079813] pinctrl core: initialized pinctrl subsystem
+[    0.080450] DMI not present or invalid.
+[    0.080833] NET: Registered protocol family 16
+[    0.090504] DMA: preallocated 512 KiB GFP_KERNEL pool for atomic allocations
+[    0.091904] DMA: preallocated 512 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.093438] DMA: preallocated 512 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.093537] audit: initializing netlink subsys (disabled)
+[    0.093771] audit: type=2000 audit(0.092:1): state=initialized audit_enabled=0 res=1
+[    0.094478] thermal_sys: Registered thermal governor 'step_wise'
+[    0.094482] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.094817] cpuidle: using governor menu
+[    0.095584] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.095678] ASID allocator initialised with 65536 entries
+[    0.096974] Serial: AMBA PL011 UART driver
+[    0.097046] imx mu driver is registered.
+[    0.097071] imx rpmsg driver is registered.
+[    0.097736] printk: console [ramoops-1] enabled
+[    0.097940] pstore: Registered ramoops as persistent store backend
+[    0.097950] ramoops: using 0x100000@0x94400000, ecc: 0
+[    0.110401] imx8mp-pinctrl 30330000.pinctrl: initialized IMX pinctrl driver
+[    0.160891] HugeTLB registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.160908] HugeTLB registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.160917] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.160925] HugeTLB registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.165897] ACPI: Interpreter disabled.
+[    0.166779] iommu: Default domain type: Translated 
+[    0.166903] vgaarb: loaded
+[    0.167475] SCSI subsystem initialized
+[    0.167840] usbcore: registered new interface driver usbfs
+[    0.167885] usbcore: registered new interface driver hub
+[    0.167925] usbcore: registered new device driver usb
+[    0.169056] mc: Linux media interface: v0.10
+[    0.169087] videodev: Linux video capture interface: v2.00
+[    0.169180] pps_core: LinuxPPS API ver. 1 registered
+[    0.169189] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.169208] PTP clock support registered
+[    0.169554] trusty trusty: failed to get version: -1
+[    0.169565] trusty trusty: selected api version: 0 (requested 5)
+[    0.170156] EDAC MC: Ver: 3.0.0
+[    0.171721] FPGA manager framework
+[    0.171830] Advanced Linux Sound Architecture Driver Initialized.
+[    0.172514] Bluetooth: Core ver 2.22
+[    0.172546] NET: Registered protocol family 31
+[    0.172553] Bluetooth: HCI device and connection manager initialized
+[    0.172566] Bluetooth: HCI socket layer initialized
+[    0.172577] Bluetooth: L2CAP socket layer initialized
+[    0.172594] Bluetooth: SCO socket layer initialized
+[    0.174363] clocksource: Switched to clocksource arch_sys_counter
+[    0.268835] VFS: Disk quotas dquot_6.6.0
+[    0.268896] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    0.269086] pnp: PnP ACPI: disabled
+[    0.276621] NET: Registered protocol family 2
+[    0.276776] IP idents hash table entries: 65536 (order: 7, 524288 bytes, linear)
+[    0.278522] tcp_listen_portaddr_hash hash table entries: 2048 (order: 3, 32768 bytes, linear)
+[    0.278572] TCP established hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.278831] TCP bind hash table entries: 32768 (order: 7, 524288 bytes, linear)
+[    0.279291] TCP: Hash tables configured (established 32768 bind 32768)
+[    0.279399] UDP hash table entries: 2048 (order: 4, 65536 bytes, linear)
+[    0.279483] UDP-Lite hash table entries: 2048 (order: 4, 65536 bytes, linear)
+[    0.279668] NET: Registered protocol family 1
+[    0.280157] PCI: CLS 0 bytes, default 64
+[    0.280350] Trying to unpack rootfs image as initramfs...
+[    0.638463] Freeing initrd memory: 8308K
+[    0.639761] hw perfevents: enabled with armv8_pmuv3 PMU driver, 7 counters available
+[    0.640611] kvm [1]: IPA Size Limit: 40 bits
+[    0.643860] kvm [1]: GICv3: no GICV resource entry
+[    0.643868] kvm [1]: disabling GICv2 emulation
+[    0.643886] kvm [1]: GIC system register CPU interface enabled
+[    0.643979] kvm [1]: vgic interrupt IRQ9
+[    0.644122] kvm [1]: Hyp mode initialized successfully
+[    0.647216] Initialise system trusted keyrings
+[    0.647379] workingset: timestamp_bits=42 max_order=20 bucket_order=0
+[    0.654140] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.654290] jffs2: version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+[    0.654700] fuse: init (API version 7.32)
+[    0.655050] 9p: Installing v9fs 9p2000 file system support
+[    0.688630] Key type asymmetric registered
+[    0.688645] Asymmetric key parser 'x509' registered
+[    0.688685] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 237)
+[    0.688693] io scheduler mq-deadline registered
+[    0.688710] io scheduler kyber registered
+[    0.696490] pwm-backlight lvds_backlight: supply power not found, using dummy regulator
+[    0.696858] pwm-backlight dsi_backlight: supply power not found, using dummy regulator
+[    0.710629] imx-sdma 30bd0000.dma-controller: Direct firmware load for imx/sdma/sdma-imx7d.bin failed with error -2
+[    0.710647] imx-sdma 30bd0000.dma-controller: Falling back to sysfs fallback for: imx/sdma/sdma-imx7d.bin
+[    0.712670] mxs-dma 33000000.dma-apbh: initialized
+[    0.714746] SoC: i.MX8MP revision 1.1
+[    0.715281] Bus freq driver module loaded
+[    0.719542] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    0.722111] 30860000.serial: ttymxc0 at MMIO 0x30860000 (irq = 33, base_baud = 5000000) is a IMX
+[    0.722714] 30880000.serial: ttymxc2 at MMIO 0x30880000 (irq = 34, base_baud = 5000000) is a IMX
+[    0.723233] 30890000.serial: ttymxc1 at MMIO 0x30890000 (irq = 35, base_baud = 1500000) is a IMX
+[    1.899417] printk: console [ttymxc1] enabled
+[    1.904386] 30a60000.serial: ttymxc3 at MMIO 0x30a60000 (irq = 42, base_baud = 5000000) is a IMX
+[    1.931159] brd: module loaded
+[    1.945486] loop: module loaded
+[    1.949088] zram: Added device: zram0
+[    1.954442] nd_pmem namespace0.0: unable to guarantee persistence of writes
+[    1.954576] NOHZ tick-stop error: Non-RCU local softirq work is pending, handler #80!!!
+[    1.961900] megasas: 07.714.04.00-rc1
+[    1.975195] imx ahci driver is registered.
+[    1.985508] libphy: Fixed MDIO Bus: probed
+[    1.991332] tun: Universal TUN/TAP device driver, 1.6
+[    1.996595] CAN device driver interface
+[    2.001993] thunder_xcv, ver 1.0
+[    2.005277] thunder_bgx, ver 1.0
+[    2.008575] nicpf, ver 1.0
+[    2.014157] hclge is initializing
+[    2.017535] hns3: Hisilicon Ethernet Network Driver for Hip08 Family - version
+[    2.024782] hns3: Copyright (c) 2017 Huawei Corporation.
+[    2.030164] e1000: Intel(R) PRO/1000 Network Driver
+[    2.035052] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[    2.040854] e1000e: Intel(R) PRO/1000 Network Driver
+[    2.045862] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    2.051840] igb: Intel(R) Gigabit Ethernet Network Driver
+[    2.057251] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    2.062874] igbvf: Intel(R) Gigabit Virtual Function Network Driver
+[    2.069151] igbvf: Copyright (c) 2009 - 2012 Intel Corporation.
+[    2.075315] sky2: driver version 1.30
+[    2.079613] PPP generic driver version 2.4.2
+[    2.084053] PPP BSD Compression module registered
+[    2.088774] PPP Deflate Compression module registered
+[    2.093850] PPP MPPE Compression module registered
+[    2.098655] NET: Registered protocol family 24
+[    2.103126] PPTP driver version 0.8.5
+[    2.107029] usbcore: registered new interface driver r8152
+[    2.112584] usbcore: registered new interface driver asix
+[    2.118044] usbcore: registered new interface driver ax88179_178a
+[    2.124186] usbcore: registered new interface driver cdc_ether
+[    2.130068] usbcore: registered new interface driver net1080
+[    2.135768] usbcore: registered new interface driver rndis_host
+[    2.141728] usbcore: registered new interface driver cdc_subset
+[    2.147702] usbcore: registered new interface driver zaurus
+[    2.153334] usbcore: registered new interface driver cdc_ncm
+[    2.159038] usbcore: registered new interface driver qmi_wwan
+[    2.165068] VFIO - User Level meta-driver version: 0.3
+[    2.176241] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    2.182796] ehci-pci: EHCI PCI platform driver
+[    2.187286] ehci-platform: EHCI generic platform driver
+[    2.192810] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    2.199027] ohci-pci: OHCI PCI platform driver
+[    2.203519] ohci-platform: OHCI generic platform driver
+[    2.209706] usbcore: registered new interface driver cdc_acm
+[    2.215376] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+[    2.223467] usbcore: registered new interface driver cdc_wdm
+[    2.229316] usbcore: registered new interface driver uas
+[    2.234691] usbcore: registered new interface driver usb-storage
+[    2.240784] usbcore: registered new interface driver usbserial_generic
+[    2.247344] usbserial: USB Serial support registered for generic
+[    2.253393] usbcore: registered new interface driver cp210x
+[    2.258998] usbserial: USB Serial support registered for cp210x
+[    2.264960] usbcore: registered new interface driver ftdi_sio
+[    2.270746] usbserial: USB Serial support registered for FTDI USB Serial Device
+[    2.278102] usbcore: registered new interface driver option
+[    2.283705] usbserial: USB Serial support registered for GSM modem (1-port)
+[    2.290715] usbcore: registered new interface driver quatech2
+[    2.296492] usbserial: USB Serial support registered for Quatech 2nd gen USB to Serial Driver
+[    2.305059] usbcore: registered new interface driver usb_serial_simple
+[    2.311615] usbserial: USB Serial support registered for carelink
+[    2.317738] usbserial: USB Serial support registered for zio
+[    2.323430] usbserial: USB Serial support registered for funsoft
+[    2.329486] usbserial: USB Serial support registered for flashloader
+[    2.335875] usbserial: USB Serial support registered for google
+[    2.341825] usbserial: USB Serial support registered for libtransistor
+[    2.348383] usbserial: USB Serial support registered for vivopay
+[    2.354420] usbserial: USB Serial support registered for moto_modem
+[    2.360715] usbserial: USB Serial support registered for motorola_tetra
+[    2.367360] usbserial: USB Serial support registered for novatel_gps
+[    2.373741] usbserial: USB Serial support registered for hp4x
+[    2.379515] usbserial: USB Serial support registered for suunto
+[    2.385467] usbserial: USB Serial support registered for siemens_mpi
+[    2.391868] usbcore: registered new interface driver usb_ehset_test
+[    2.400738] dummy_hcd dummy_hcd.0: USB Host+Gadget Emulator, driver 02 May 2005
+[    2.408081] dummy_hcd dummy_hcd.0: Dummy host controller
+[    2.413408] dummy_hcd dummy_hcd.0: new USB bus registered, assigned bus number 1
+[    2.420994] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 5.10
+[    2.429272] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    2.436509] usb usb1: Product: Dummy host controller
+[    2.441483] usb usb1: Manufacturer: Linux 5.10.72-dirty dummy_hcd
+[    2.447588] usb usb1: SerialNumber: dummy_hcd.0
+[    2.452597] hub 1-0:1.0: USB hub found
+[    2.456395] hub 1-0:1.0: 1 port detected
+[    2.462426] snvs_pwrkey 30370000.snvs:snvs-powerkey: snvs pwkey: trusty driver failed to probe! nr=0xb5000000 error=-1. Use normal mode.
+[    2.474951] input: 30370000.snvs:snvs-powerkey as /devices/platform/soc@0/30000000.bus/30370000.snvs/30370000.snvs:snvs-powerkey/input/input0
+[    2.488376] usbcore: registered new interface driver xpad
+[    2.493840] usbcore: registered new interface driver usb_acecad
+[    2.499814] usbcore: registered new interface driver aiptek
+[    2.505439] usbcore: registered new interface driver gtco
+[    2.510879] usbcore: registered new interface driver hanwang
+[    2.516584] usbcore: registered new interface driver kbtab
+[    2.523847] snvs_rtc 30370000.snvs:snvs-rtc-lp: snvs rtc: trusty snvs driver failed to probe! nr=0xb5000000 ret=-1. Use normal mode.
+[    2.536360] snvs_rtc 30370000.snvs:snvs-rtc-lp: registered as rtc0
+[    2.542580] snvs_rtc 30370000.snvs:snvs-rtc-lp: setting system clock to 1970-01-01T00:00:09 UTC (9)
+[    2.551807] i2c /dev entries driver
+[    2.557073] usbcore: registered new interface driver uvcvideo
+[    2.562836] USB Video Class driver (1.1.1)
+[    2.567924] __power_supply_register: Expected proper parent device for 'battery'
+[    2.575732] __power_supply_register: Expected proper parent device for 'usb'
+[    2.584736] trusty trusty: trusty-log not supported on secure side.
+[    2.591443] trusty-virtio trusty:trusty-virtio: trusty_load_device_descr: virtio get descr returned (-1)
+[    2.600952] trusty-virtio trusty:trusty-virtio: failed (-19) to load device descr
+[    2.608454] trusty-virtio trusty:trusty-virtio: Failed to add virtio devices
+[    2.617216] device-mapper: uevent: version 1.0.3
+[    2.622126] device-mapper: ioctl: 4.44.0-ioctl (2021-02-01) initialised: dm-devel@redhat.com
+[    2.630842] Bluetooth: HCI UART driver ver 2.3
+[    2.635311] Bluetooth: HCI UART protocol H4 registered
+[    2.640470] Bluetooth: HCI UART protocol BCSP registered
+[    2.645823] Bluetooth: HCI UART protocol LL registered
+[    2.650973] Bluetooth: HCI UART protocol ATH3K registered
+[    2.656399] Bluetooth: HCI UART protocol Three-wire (H5) registered
+[    2.662874] Bluetooth: HCI UART protocol Broadcom registered
+[    2.668570] Bluetooth: HCI UART protocol QCA registered
+[    2.673806] rtk_btusb: RTKBT_RELEASE_NAME: 20220525_BT_ANDROID_11.0
+[    2.680082] rtk_btusb: Realtek Bluetooth USB driver module init, version 5.2.1
+[    2.687314] rtk_btusb: Register usb char device interface for BT driver
+[    2.694126] usbcore: registered new interface driver rtk_btusb
+[    2.700286] EDAC MC: ECC not enabled
+[    2.705586] sdhci: Secure Digital Host Controller Interface driver
+[    2.711792] sdhci: Copyright(c) Pierre Ossman
+[    2.716701] Synopsys Designware Multimedia Card Interface Driver
+[    2.723607] sdhci-pltfm: SDHCI platform and OF driver helper
+[    2.732333] ledtrig-cpu: registered to indicate activity on CPUs
+[    2.739357] SMCCC: SOC_ID: ARCH_SOC_ID not implemented, skipping ....
+[    2.745864] hid: raw HID events driver (C) Jiri Kosina
+[    2.754234] usbcore: registered new interface driver usbhid
+[    2.759833] usbhid: USB HID core driver
+[    2.764405] mmc2: SDHCI controller on 30b60000.mmc [30b60000.mmc] using ADMA
+[    2.764899] mxc-md 32c00000.bus:camera: deferring cap_device registration
+[    2.780344] ashmem: initialized
+[    2.792443] Galcore version 6.4.3.p2.336687
+[    2.855072] mmc2: new HS400 Enhanced strobe MMC card at address 0001
+[    2.862895] mmcblk2: mmc2:0001 BJTD4R 29.1 GiB 
+[    2.867607] mmcblk2boot0: mmc2:0001 BJTD4R partition 1 4.00 MiB
+[    2.873844] mmcblk2boot1: mmc2:0001 BJTD4R partition 2 4.00 MiB
+[    2.880020] mmcblk2rpmb: mmc2:0001 BJTD4R partition 3 4.00 MiB, chardev (506:0)
+[    2.889967] Alternate GPT is invalid, using primary GPT.
+[    2.895353]  mmcblk2: p1 p2 p3 p4 p5 p6 p7 p8 p9 p10 p11 p12 p13 p14
+[    2.958545] CPU: 2 PID: 1 Comm: swapper/0 Not tainted 5.10.72-dirty #27
+[    2.965168] Hardware name: NXP i.MX8MPlus EVK board (DT)
+[    2.970480] Call trace:
+[    2.972934]  dump_backtrace+0x0/0x1c4
+[    2.976599]  show_stack+0x1c/0x2c
+[    2.979917]  dump_stack_lvl+0xc4/0x104
+[    2.983666]  dump_stack+0x1c/0x64
+[    2.986983]  gckOS_DumpCallStack+0x14/0x28
+[    2.991082]  gckHARDWARE_DumpGPUState+0xf50/0xf94
+[    2.995787]  gckHARDWARE_ExecuteFunctions+0x144/0x198
+[    3.000838]  _FuncExecute+0x14/0x24
+[    3.004327]  gckFUNCTION_Execute+0x28/0x48
+[    3.008424]  gckHARDWARE_InitializeHardware+0xa04/0xa54
+[    3.013649]  gckKERNEL_Construct+0x6c4/0x754
+[    3.017920]  gckDEVICE_AddCore+0x50/0x194
+[    3.021931]  gckGALDEVICE_Construct+0x468/0x8e4
+[    3.026463]  gpu_probe+0x8d0/0xa80
+[    3.029868]  platform_drv_probe+0x9c/0xc4
+[    3.033878]  really_probe+0x1dc/0x4a4
+[    3.037541]  driver_probe_device+0x80/0xc0
+[    3.041638]  device_driver_attach+0x70/0xb4
+[    3.045822]  __driver_attach+0xc8/0x150
+[    3.049659]  bus_for_each_dev+0x80/0xd0
+[    3.053495]  driver_attach+0x28/0x38
+[    3.057071]  bus_add_driver+0x108/0x1e8
+[    3.060908]  driver_register+0x7c/0x118
+[    3.064744]  __platform_driver_register+0x48/0x58
+[    3.069451]  gpu_init+0x4c/0xa4
+[    3.072593]  do_one_initcall+0x98/0x2c8
+[    3.076430]  do_initcall_level+0xa8/0x15c
+[    3.080439]  do_initcalls+0x58/0x9c
+[    3.083928]  do_basic_setup+0x28/0x38
+[    3.087591]  kernel_init_freeable+0xec/0x14c
+[    3.091861]  kernel_init+0x18/0x198
+[    3.095351]  ret_from_fork+0x10/0x30
+[    3.141895] CPU: 2 PID: 1 Comm: swapper/0 Not tainted 5.10.72-dirty #27
+[    3.148508] Hardware name: NXP i.MX8MPlus EVK board (DT)
+[    3.153818] Call trace:
+[    3.156267]  dump_backtrace+0x0/0x1c4
+[    3.159931]  show_stack+0x1c/0x2c
+[    3.163246]  dump_stack_lvl+0xc4/0x104
+[    3.166995]  dump_stack+0x1c/0x64
+[    3.170311]  gckOS_DumpCallStack+0x14/0x28
+[    3.174409]  gckHARDWARE_DumpGPUState+0xf50/0xf94
+[    3.179114]  gckHARDWARE_ExecuteFunctions+0x144/0x198
+[    3.184166]  _FuncExecute+0x14/0x24
+[    3.187654]  gckFUNCTION_Execute+0x28/0x48
+[    3.191751]  gckHARDWARE_InitializeHardware+0xa10/0xa54
+[    3.196976]  gckKERNEL_Construct+0x6c4/0x754
+[    3.201246]  gckDEVICE_AddCore+0x50/0x194
+[    3.205256]  gckGALDEVICE_Construct+0x468/0x8e4
+[    3.209787]  gpu_probe+0x8d0/0xa80
+[    3.213190]  platform_drv_probe+0x9c/0xc4
+[    3.217199]  really_probe+0x1dc/0x4a4
+[    3.220863]  driver_probe_device+0x80/0xc0
+[    3.224959]  device_driver_attach+0x70/0xb4
+[    3.229143]  __driver_attach+0xc8/0x150
+[    3.232979]  bus_for_each_dev+0x80/0xd0
+[    3.236815]  driver_attach+0x28/0x38
+[    3.240390]  bus_add_driver+0x108/0x1e8
+[    3.244227]  driver_register+0x7c/0x118
+[    3.248064]  __platform_driver_register+0x48/0x58
+[    3.252768]  gpu_init+0x4c/0xa4
+[    3.255910]  do_one_initcall+0x98/0x2c8
+[    3.259746]  do_initcall_level+0xa8/0x15c
+[    3.263755]  do_initcalls+0x58/0x9c
+[    3.267244]  do_basic_setup+0x28/0x38
+[    3.270907]  kernel_init_freeable+0xec/0x14c
+[    3.275177]  kernel_init+0x18/0x198
+[    3.278666]  ret_from_fork+0x10/0x30
+[    3.290540] [drm] Initialized vivante 1.0.0 20170808 for 40000000.mix_gpu_ml on minor 0
+[    3.299936] vpu driver probe fail! nr=0xb7000000 ret=-1. Use normal mode.
+[    3.307059] hantrodec 0 : module inserted. Major = 502
+[    3.312801] vpu driver probe fail! nr=0xb7000000 ret=-1. Use normal mode.
+[    3.319740] hantrodec 1 : module inserted. Major = 502
+[    3.325763] mxc_hantro_vc8000e 38320000.vpu_vc8000e: hantro_enc: get trusty_dev node, use Trusty mode.
+[    3.335093] hantro_enc driver probe fail! nr=0xb8000000 ret=-1. Use normal mode.
+[    3.342740] hantroenc: HW at base <0000000038320000> with ID <0x80006200>
+[    3.349667] hx280enc: module inserted. Major <501>
+[    3.355932] usbcore: registered new interface driver snd-usb-audio
+[    3.369927] imx-xcvr sound-xcvr: snd_soc_register_card failed: -517
+[    3.377983] imx-cdnhdmi sound-hdmi: snd_soc_register_card failed (-517)
+[    3.384745] pktgen: Packet Generator for packet performance testing. Version: 2.75
+[    3.392820] NET: Registered protocol family 26
+[    3.397293] netem: version 1.3
+[    3.400368] u32 classifier
+[    3.403089]     input device check on
+[    3.406764]     Actions configured
+[    3.410702] xt_time: kernel timezone is -0000
+[    3.415203] gre: GRE over IPv4 demultiplexor driver
+[    3.420092] IPv4 over IPsec tunneling driver
+[    3.425000] Initializing XFRM netlink socket
+[    3.429312] IPsec XFRM device driver
+[    3.433378] NET: Registered protocol family 10
+[    3.438709] Segment Routing with IPv6
+[    3.442466] mip6: Mobile IPv6
+[    3.446503] NET: Registered protocol family 17
+[    3.451002] NET: Registered protocol family 15
+[    3.455465] can: controller area network core
+[    3.459891] NET: Registered protocol family 29
+[    3.464354] can: raw protocol
+[    3.467335] can: broadcast manager protocol
+[    3.471532] can: netlink gateway - max_hops=1
+[    3.476134] Bluetooth: RFCOMM TTY layer initialized
+[    3.481050] Bluetooth: RFCOMM socket layer initialized
+[    3.486222] Bluetooth: RFCOMM ver 1.11
+[    3.490021] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[    3.495363] Bluetooth: BNEP filters: protocol multicast
+[    3.500601] Bluetooth: BNEP socket layer initialized
+[    3.505577] Bluetooth: HIDP (Human Interface Emulation) ver 1.2
+[    3.511513] Bluetooth: HIDP socket layer initialized
+[    3.516508] l2tp_core: L2TP core driver, V2.0
+[    3.520885] l2tp_ppp: PPPoL2TP kernel driver, V2.0
+[    3.525687] 8021q: 802.1Q VLAN Support v1.8
+[    3.529903] lib80211: common routines for IEEE802.11 drivers
+[    3.535982] 9pnet: Installing 9P2000 support
+[    3.540308] tsn generic netlink module v1 init...
+[    3.545946] registered taskstats version 1
+[    3.550066] Loading compiled-in X.509 certificates
+[    3.555023] Key type ._fscrypt registered
+[    3.559043] Key type .fscrypt registered
+[    3.562978] Key type fscrypt-provisioning registered
+[    3.568911] pstore: Using crash dump compression: deflate
+[    3.614493] nxp-pca9450 0-0025: pca9450bc probed.
+[    3.619314] i2c i2c-0: IMX I2C adapter registered
+[    3.625438] ov5640 1-003c: supply DOVDD not found, using dummy regulator
+[    3.632275] ov5640 1-003c: supply AVDD not found, using dummy regulator
+[    3.638946] ov5640 1-003c: supply DVDD not found, using dummy regulator
+[    3.693029] ov5640 1-003c: ov5640_read_reg: error: reg=300a
+[    3.698622] ov5640 1-003c: ov5640_check_chip_id: failed to read chip identifier
+[    3.710541] rtc-pcf8563 1-0051: low voltage detected, date/time is not reliable.
+[    3.718091] rtc-pcf8563 1-0051: registered as rtc1
+[    3.724624] i2c i2c-1: IMX I2C adapter registered
+[    3.730937] Goodix-TS 2-0014: supply AVDD28 not found, using dummy regulator
+[    3.738134] Goodix-TS 2-0014: supply VDDIO not found, using dummy regulator
+[    3.843269] Goodix-TS 2-0014: ID 911, version: 1060
+[    3.848960] input: Goodix Capacitive TouchScreen as /devices/platform/soc@0/30800000.bus/30a40000.i2c/i2c-2/2-0014/input/input1
+[    3.860825] i2c i2c-2: IMX I2C adapter registered
+[    3.866662] imx8mq-usb-phy 381f0040.usb-phy: supply vbus not found, using dummy regulator
+[    3.875209] imx8mq-usb-phy 382f0040.usb-phy: supply vbus not found, using dummy regulator
+[    3.884318] pwm-backlight lvds_backlight: supply power not found, using dummy regulator
+[    3.893769] pwm-backlight dsi_backlight: supply power not found, using dummy regulator
+[    3.908939] sdhci-esdhc-imx 30b50000.mmc: Got CD GPIO
+[    3.909020] pps pps0: new PPS source ptp0
+[    3.924948] fec 30be0000.ethernet: Invalid MAC address: 00:00:00:00:00:00
+[    3.931787] fec 30be0000.ethernet: Using random MAC address: 4e:d6:04:fd:7d:df
+[    3.940193] libphy: fec_enet_mii_bus: probed
+[    3.942494] random: fast init done
+[    3.945725] mmc1: SDHCI controller on 30b50000.mmc [30b50000.mmc] using ADMA
+[    3.950447] fec 30be0000.ethernet eth0: registered PHC device 0
+[    3.961980] imx-dwmac 30bf0000.ethernet: IRQ eth_lpi not found
+[    3.967993] imx-dwmac 30bf0000.ethernet: no reset control found
+[    3.974154] imx-dwmac 30bf0000.ethernet: User ID: 0x10, Synopsys ID: 0x51
+[    3.981013] imx-dwmac 30bf0000.ethernet: 	DWMAC4/5
+[    3.985871] imx-dwmac 30bf0000.ethernet: DMA HW capability register supported
+[    3.993071] imx-dwmac 30bf0000.ethernet: RX Checksum Offload Engine supported
+[    4.000277] imx-dwmac 30bf0000.ethernet: TX Checksum insertion supported
+[    4.007006] imx-dwmac 30bf0000.ethernet: Wake-Up On Lan supported
+[    4.013174] imx-dwmac 30bf0000.ethernet: Enable RX Mitigation via HW Watchdog Timer
+[    4.020880] imx-dwmac 30bf0000.ethernet: device MAC address ba:88:81:ee:d4:02
+[    4.028037] imx-dwmac 30bf0000.ethernet: Enabled Flow TC (entries=8)
+[    4.034438] imx-dwmac 30bf0000.ethernet: Enabling HW TC (entries=256, max_off=256)
+[    4.042030] imx-dwmac 30bf0000.ethernet: Using 34 bits DMA width
+[    4.048481] libphy: stmmac: probed
+[    4.083459] imx-lcdifv3 32e80000.lcd-controller: lcdif: failed to get response of echo. Use normal mode.
+[    4.099342] xhci-hcd xhci-hcd.1.auto: xHCI Host Controller
+[    4.104883] xhci-hcd xhci-hcd.1.auto: new USB bus registered, assigned bus number 2
+[    4.113024] xhci-hcd xhci-hcd.1.auto: hcc params 0x0220fe6c hci version 0x110 quirks 0x0000002021810010
+[    4.122492] xhci-hcd xhci-hcd.1.auto: irq 80, io mem 0x38200000
+[    4.128591] xhci-hcd xhci-hcd.1.auto: xHCI Host Controller
+[    4.133283] mmc1: host does not support reading read-only switch, assuming write-enable
+[    4.134103] xhci-hcd xhci-hcd.1.auto: new USB bus registered, assigned bus number 3
+[    4.144748] mmc1: new high speed SDHC card at address 1234
+[    4.149760] xhci-hcd xhci-hcd.1.auto: Host supports USB 3.0 SuperSpeed
+[    4.155776] mmcblk1: mmc1:1234 SA04G 3.64 GiB 
+[    4.161946] usb usb2: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 5.10
+[    4.168320]  mmcblk1: p1
+[    4.174516] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    4.174521] usb usb2: Product: xHCI Host Controller
+[    4.174526] usb usb2: Manufacturer: Linux 5.10.72-dirty xhci-hcd
+[    4.195189] usb usb2: SerialNumber: xhci-hcd.1.auto
+[    4.200509] hub 2-0:1.0: USB hub found
+[    4.204300] hub 2-0:1.0: 1 port detected
+[    4.208582] usb usb3: We don't know the algorithms for LPM for this host, disabling LPM.
+[    4.216815] usb usb3: New USB device found, idVendor=1d6b, idProduct=0003, bcdDevice= 5.10
+[    4.225100] usb usb3: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    4.232361] usb usb3: Product: xHCI Host Controller
+[    4.237254] usb usb3: Manufacturer: Linux 5.10.72-dirty xhci-hcd
+[    4.243276] usb usb3: SerialNumber: xhci-hcd.1.auto
+[    4.248571] hub 3-0:1.0: USB hub found
+[    4.252359] hub 3-0:1.0: 1 port detected
+[    4.257655] imx-cpufreq-dt imx-cpufreq-dt: cpu speed grade 7 mkt segment 2 supported-hw 0x80 0x4
+[    4.267492] Hot alarm is canceled. GPU3D clock will return to 64/64
+[    4.276590] mxc-md 32c00000.bus:camera: deferring cap_device registration
+[    4.288589] imx-cdnhdmi sound-hdmi: snd_soc_register_card failed (-517)
+[    4.318156] isi-capture 32e00000.isi:cap_device: deferring 32e00000.isi:cap_device device registration
+[    4.328262] mxc-isi 32e00000.isi: mxc_isi.0 registered successfully
+[    4.335279] mxc-mipi-csi2-sam 32e40000.csi: supply mipi-phy not found, using dummy regulator
+[    4.344061] mxc-mipi-csi2-sam 32e40000.csi: lanes: 2, hs_settle: 13, clk_settle: 2, wclk: 1, freq: 500000000
+[    4.359740] imx-drm display-subsystem: bound imx-lcdifv3-crtc.0 (ops lcdifv3_crtc_ops)
+[    4.367742] imx-drm display-subsystem: bound imx-lcdifv3-crtc.1 (ops lcdifv3_crtc_ops)
+[    4.375710] imx-drm display-subsystem: bound imx-lcdifv3-crtc.2 (ops lcdifv3_crtc_ops)
+[    4.383699] imx_sec_dsim_drv 32e60000.mipi_dsi: version number is 0x1060200
+[    4.390922] panel-simple-dsi 32e60000.mipi_dsi.0: supply power not found, using dummy regulator
+[    4.399783] panel-simple-dsi 32e60000.mipi_dsi.0: Expected bpc in {6,8} but got: 0
+[    4.407357] ------------------------------------->end---- 
+[    4.413025] imx-drm display-subsystem: bound 32e60000.mipi_dsi (ops imx_sec_dsim_ops)
+[    4.421009] imx-drm display-subsystem: bound 32c00000.bus:ldb@32ec005c (ops imx8mp_ldb_ops)
+[    4.429628] dwhdmi-imx 32fd8000.hdmi: Detected HDMI TX controller v2.13a with HDCP (samsung_dw_hdmi_phy2)
+[    4.439715] dwhdmi-imx 32fd8000.hdmi: registered DesignWare HDMI I2C bus driver
+[    4.447915] imx-drm display-subsystem: bound 32fd8000.hdmi (ops dw_hdmi_imx_ops)
+[    4.455700] [drm] Initialized imx-drm 1.0.0 20120507 for display-subsystem on minor 1
+[    4.466416] usb 2-1: new high-speed USB device number 2 using xhci-hcd
+[    4.596040] Console: switching to colour frame buffer device 128x37
+[    4.614950] usb 2-1: New USB device found, idVendor=0424, idProduct=2807, bcdDevice= 6.23
+[    4.614955] usb 2-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[    4.614959] usb 2-1: Product: USB2807 Hub
+[    4.614963] usb 2-1: Manufacturer: Microchip
+[    4.652407] imx-drm display-subsystem: [drm] fb0: imx-drmdrmfb frame buffer device
+[    4.661072] remoteproc remoteproc0: imx-dsp-rproc is available
+[    4.667727] mxc-md 32c00000.bus:camera: deferring cap_device registration
+[    4.673973] hub 2-1:1.0: USB hub found
+[    4.675868] debugfs: Directory '30c90000.easrc' with parent 'wm8960-audio' already present!
+[    4.678373] hub 2-1:1.0: 7 ports detected
+[    4.750412] usb 3-1: new SuperSpeed Gen 1 USB device number 2 using xhci-hcd
+[    4.774828] usb 3-1: New USB device found, idVendor=0424, idProduct=5807, bcdDevice= 6.23
+[    4.783022] usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[    4.790169] usb 3-1: Product: USB5807 Hub
+[    4.794186] usb 3-1: Manufacturer: Microchip
+[    4.807195] input: audio-hdmi HDMI Jack as /devices/platform/sound-hdmi/sound/card2/input3
+[    4.817312] mx8-img-md: Registered mxc_isi.0.capture as /dev/video2
+[    4.823799] hub 3-1:1.0: USB hub found
+[    4.823815] unregister ISI channel: mxc_isi.0
+[    4.831955] hub 3-1:1.0: 7 ports detected
+[    4.833901] input: keys as /devices/platform/keys/input/input4
+[    4.842892] isi-m2m 32e00000.isi:m2m_device: Register m2m success for ISI.0
+[    4.850023] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+[    4.860561] cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+[    4.867199] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
+[    4.872492] ALSA device list:
+[    4.875825] platform regulatory.0: Falling back to sysfs fallback for: regulatory.db
+[    4.886557]   #0: imx-audio-xcvr
+[    4.889783]   #1: wm8960-audio
+[    4.892859]   #2: audio-hdmi
+[    4.896183] Freeing unused kernel memory: 1472K
+[    4.926440] Run /init as init process
+[    4.958821] init: init first stage started!
+[    4.963194] init: Unable to open /lib/modules, skipping module loading.
+[    4.970116] init: Switching root to '/first_stage_ramdisk'
+[    4.978038] init: Using Android DT directory /proc/device-tree/firmware/android/
+[    5.011155] init: [libfs_mgr]superblock s_max_mnt_count:65535,/dev/block/by-name/metadata
+[    5.019492] init: [libfs_mgr]Filesystem on /dev/block/by-name/metadata was not cleanly shutdown; state flags: 0x1, incompat feature flags: 0x46
+[    5.032462] init: [libfs_mgr]check_fs(): mount(/dev/block/by-name/metadata,/metadata,ext4)=-1: No such file or directory
+[    5.034377] usb 2-1.3: new high-speed USB device number 3 using xhci-hcd
+[    5.043501] init: [libfs_mgr]Running /system/bin/e2fsck on /dev/block/mmcblk2p8
+[    5.058664] logwrapper: Cannot log to file /dev/fscklogs/log
+[    5.059869] random: e2fsck: uninitialized urandom read (40 bytes read)
+[    5.064397] logwrapper: 
+[    5.071186] random: e2fsck: uninitialized urandom read (4 bytes read)
+[    5.080018] random: e2fsck: uninitialized urandom read (4 bytes read)
+[    5.086991] e2fsck: e2fsck 1.45.4 (23-Sep-2019)
+[    5.091604] e2fsck: /dev/block/by-name/metadata: recovering journal
+[    5.118782] e2fsck: Pass 1: Checking inodes, blocks, and sizes
+[    5.124697] e2fsck: Pass 2: Checking directory structure
+[    5.130050] e2fsck: Pass 3: Checking directory connectivity
+[    5.135670] e2fsck: Pass 4: Checking reference counts
+[    5.140783] e2fsck: Pass 5: Checking group summary information
+[    5.146663] e2fsck: Free blocks count wrong (2935, counted=2904).
+[    5.152766] e2fsck: Fix? yes
+[    5.155654] e2fsck: 
+[    5.160129] EXT4-fs (mmcblk2p8): mounted filesystem with ordered data mode. Opts: discard
+[    5.184244] usb 2-1.3: New USB device found, idVendor=1c9e, idProduct=9b3c, bcdDevice= 3.18
+[    5.192663] usb 2-1.3: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[    5.199999] usb 2-1.3: Product: USB Modem
+[    5.204030] usb 2-1.3: Manufacturer: LONGSUNG
+[    5.222683] device-mapper: verity: sha1 using implementation "sha1-ce"
+[    5.234024] EXT4-fs (dm-4): mounted filesystem without journal. Opts: errors=panic,barrier=1,inode_readahead_blks=8
+[    5.253803] device-mapper: verity: sha1 using implementation "sha1-ce"
+[    5.264520] EXT4-fs (dm-5): mounted filesystem without journal. Opts: errors=panic,barrier=1,inode_readahead_blks=8
+[    5.276933] device-mapper: verity: sha1 using implementation "sha1-ce"
+[    5.288044] EXT4-fs (dm-6): mounted filesystem without journal. Opts: errors=panic
+[    5.297519] device-mapper: verity: sha1 using implementation "sha1-ce"
+[    5.308500] EXT4-fs (dm-7): mounted filesystem without journal. Opts: errors=panic,barrier=1,inode_readahead_blks=8
+[    5.342414] NOHZ tick-stop error: Non-RCU local softirq work is pending, handler #80!!!
+[    5.344123] printk: init: 7 output lines suppressed due to ratelimiting
+[    5.350430] NOHZ tick-stop error: Non-RCU local softirq work is pending, handler #80!!!
+[    5.365205] printk: init: 31 output lines suppressed due to ratelimiting
+[    5.410412] NOHZ tick-stop error: Non-RCU local softirq work is pending, handler #80!!!
+[    5.411448] option 2-1.3:1.0: GSM modem (1-port) converter detected
+[    5.425020] usb 2-1.3: GSM modem (1-port) converter now attached to ttyUSB0
+[    5.432394] option 2-1.3:1.1: GSM modem (1-port) converter detected
+[    5.438945] usb 2-1.3: GSM modem (1-port) converter now attached to ttyUSB1
+[    5.446375] option 2-1.3:1.2: GSM modem (1-port) converter detected
+[    5.452964] usb 2-1.3: GSM modem (1-port) converter now attached to ttyUSB2
+[    5.460456] option 2-1.3:1.3: GSM modem (1-port) converter detected
+[    5.467220] usb 2-1.3: GSM modem (1-port) converter now attached to ttyUSB3
+[    5.519678] init: Loading SELinux policy
+[    5.554435] usb 2-1.6: new full-speed USB device number 4 using xhci-hcd
+[    5.565053] SELinux:  Permission nlmsg_getneigh in class netlink_route_socket not defined in policy.
+[    5.574380] SELinux:  Permission perfmon in class capability2 not defined in policy.
+[    5.582132] SELinux:  Permission bpf in class capability2 not defined in policy.
+[    5.589582] SELinux:  Permission checkpoint_restore in class capability2 not defined in policy.
+[    5.598330] SELinux:  Permission perfmon in class cap2_userns not defined in policy.
+[    5.606122] SELinux:  Permission bpf in class cap2_userns not defined in policy.
+[    5.613525] SELinux:  Permission checkpoint_restore in class cap2_userns not defined in policy.
+[    5.622390] SELinux:  Class anon_inode not defined in policy.
+[    5.628140] SELinux: the above unknown classes and permissions will be denied
+[    5.641161] SELinux:  policy capability network_peer_controls=1
+[    5.647208] SELinux:  policy capability open_perms=1
+[    5.652194] SELinux:  policy capability extended_socket_class=1
+[    5.659251] SELinux:  policy capability always_check_network=0
+[    5.665127] SELinux:  policy capability cgroup_seclabel=0
+[    5.670545] SELinux:  policy capability nnp_nosuid_transition=1
+[    5.676491] SELinux:  policy capability genfs_seclabel_symlinks=0
+[    5.683743] usb 2-1.6: New USB device found, idVendor=10c4, idProduct=ea60, bcdDevice= 1.00
+[    5.692130] usb 2-1.6: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[    5.699451] usb 2-1.6: Product: CP2102 USB to UART Bridge Controller
+[    5.705823] usb 2-1.6: Manufacturer: Silicon Labs
+[    5.710536] usb 2-1.6: SerialNumber: 0001
+[    5.716000] cp210x 2-1.6:1.0: cp210x converter detected
+[    5.724417] usb 2-1.6: cp210x converter now attached to ttyUSB4
+[    5.810383] usb 2-1.7: new high-speed USB device number 5 using xhci-hcd
+[    5.830416] audit: type=1403 audit(12.784:2): auid=4294967295 ses=4294967295 lsm=selinux res=1
+[    5.830679] selinux: SELinux: Loaded policy from /vendor/etc/selinux/precompiled_sepolicy
+[    5.847302] selinux: 
+[    5.854430] selinux: SELinux: Loaded file_contexts
+[    5.859261] selinux: 
+[    5.892804] init: init second stage started!
+[    5.926766] usb 2-1.7: New USB device found, idVendor=0bda, idProduct=d723, bcdDevice= 2.00
+[    5.926775] init: Using Android DT directory /proc/device-tree/firmware/android/
+[    5.935139] usb 2-1.7: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[    5.935143] usb 2-1.7: Product: 802.11n WLAN Adapter
+[    5.935146] usb 2-1.7: Manufacturer: Realtek
+[    5.935149] usb 2-1.7: SerialNumber: 00e04c000001
+[    5.971365] init: Overriding previous 'ro.' property 'pm.dexopt.boot':'verify' with new value 'quicken'
+[    5.982876] init: Couldn't load property file '/factory/factory.prop': open() failed: No such file or directory: No such file or directory
+[    5.997100] init: Setting product property ro.product.brand to 'Android' (from ro.product.product.brand)
+[    6.006669] init: Setting product property ro.product.device to 'evk_8mp' (from ro.product.product.device)
+[    6.016375] init: Setting product property ro.product.manufacturer to 'nxp' (from ro.product.product.manufacturer)
+[    6.026822] init: Setting product property ro.product.model to 'HMI8MP' (from ro.product.product.model)
+[    6.036266] init: Setting product property ro.product.name to 'evk_8mp' (from ro.product.product.name)
+[    6.045658] init: Setting property 'ro.build.fingerprint' to 'Android/evk_8mp/evk_8mp:11/RQ3A.211001.001/eng.dmatek.20230427.180204:userdebug/dev-keys'
+[    6.059413] rtk_btusb: btusb_probe: usb_interface (____ptrval____), bInterfaceNumber 0, idVendor 0x0bda, idProduct 0x0000
+[    6.070407] rtk_btusb: get_fw_table_entry: Product id = 0xd723, fw table entry size 99
+[    6.078343] rtk_btusb: firmware_info_init: Auto suspend is disabled
+[    6.084639] rtk_btusb: btusb_probe: Check bt reset flag 0
+[    6.090055] rtk_btusb: load_firmware_info: Default lmp version = 0x8723, fw file name[rtl8723d_fw]
+[    6.101719] rtk_btusb: load_firmware_info: epatch_buf = vmalloc(fw->size, GFP_KERNEL)
+[    6.163739] cgroup: Unknown subsys name 'schedtune'
+[    6.170860] audit: type=1400 audit(13.124:3): avc:  denied  { perfmon } for  pid=1 comm="init" capability=38  scontext=u:r:init:s0 tcontext=u:r:init:s0 tclass=capability2 permissive=1
+[    6.206424] NOHZ tick-stop error: Non-RCU local softirq work is pending, handler #80!!!
+[    6.214439] NOHZ tick-stop error: Non-RCU local softirq work is pending, handler #80!!!
+[    6.222515] NOHZ tick-stop error: Non-RCU local softirq work is pending, handler #80!!!
+[    6.230526] NOHZ tick-stop error: Non-RCU local softirq work is pending, handler #80!!!
+[    6.233269] ueventd: ueventd started!
+[    6.238621] NOHZ tick-stop error: Non-RCU local softirq work is pending, handler #80!!!
+[    6.245499] selinux: SELinux: Loaded file_contexts
+[    6.250255] NOHZ tick-stop error: Non-RCU local softirq work is pending, handler #80!!!
+[    6.263324] selinux: 
+[    6.266038] ueventd: Parsing file /system/etc/ueventd.rc...
+[    6.272895] ueventd: Parsing file /vendor/ueventd.rc...
+[    6.279224] ueventd: Parsing file /odm/ueventd.rc...
+[    6.284408] ueventd: Unable to read config file '/odm/ueventd.rc': open() failed: No such file or directory
+[    6.294433] ueventd: Parsing file /ueventd.nxp.rc...
+[    6.299508] ueventd: Unable to read config file '/ueventd.nxp.rc': open() failed: No such file or directory
+[    6.315728] apexd: Bootstrap subcommand detected
+[    6.400583] rtk_btusb: get_eversion: status 0, eversion 2
+[    6.406033] rtk_btusb: load_firmware_info: Default lmp_version 0x8723, project_id[9] 0x8723 -> match
+[    6.525813] ueventd: firmware: loading 'regulatory.db' for '/devices/platform/regulatory.0/firmware/regulatory.db'
+[    6.533160] imx-sdma 30e10000.dma-controller: firmware found.
+[    6.536374] imx-sdma 30bd0000.dma-controller: firmware found.
+[    6.553347] imx-sdma 30bd0000.dma-controller: loaded firmware 4.6
+[    6.559641] apexd: wait for '/dev/loop-control' took 197ms
+[    6.565874] audit: type=1400 audit(13.520:4): avc:  denied  { setattr } for  pid=31 comm="kdevtmpfs" name="loop16" dev="devtmpfs" ino=242 scontext=u:r:kernel:s0 tcontext=u:object_r:device:s0 tclass=blk_file permissive=1
+[    6.603099] apexd: Pre-allocated 27 loopback devices
+[    6.608301] apexd: Scanning /system/apex for preinstalled data
+[    6.619378] apexd: Scanning /system_ext/apex for preinstalled data
+[    6.625684] apexd: ... does not exist. Skipping
+[    6.630401] apexd: Scanning /vendor/apex for preinstalled data
+[    6.636420] apexd: ... does not exist. Skipping
+[    6.641090] apexd: Scanning /system/apex looking for APEX packages.
+[    6.647675] apexd: Found /system/apex/com.android.apex.cts.shim.apex
+[    6.665708] EXT4-fs (loop0): mounted filesystem without journal. Opts: (null)
+[    6.683778] EXT4-fs (loop1): mounted filesystem without journal. Opts: (null)
+[    6.700363] EXT4-fs (loop2): mounted filesystem without journal. Opts: (null)
+[    6.716893] EXT4-fs (loop3): mounted filesystem without journal. Opts: (null)
+[    6.732077] EXT4-fs (loop4): mounted filesystem without journal. Opts: (null)
+[    6.747980] EXT4-fs (loop5): mounted filesystem without journal. Opts: (null)
+[    6.762109] printk: apexd: 82 output lines suppressed due to ratelimiting
+[    7.015356] 8723du: loading out-of-tree module taints kernel.
+[    7.132230] usbcore: registered new interface driver rtl8723du
+[    7.159656] Registered swp emulation handler
+[    7.214574] logd.auditd: start
+[    7.220164] logd.klogd: 7217794250
+evk_8mp:/ $ [    7.237632] Console: switching to colour dummy device 80x25
+[    7.245598] watchdogd: watchdogd started (interval 10, margin 20)!
+[    7.357715] zram0: detected capacity change from 0 to 629145600
+[    7.385322] mkswap: Swapspace size: 614396k, UUID=2b55991b-839d-404a-bb02-eeea2aa7a55c
+
+[    7.426456] Adding 614396k swap on /dev/block/zram0.  Priority:-2 extents:1 across:614396k SS
+evk_8mp:/ $ [    7.495320] wait_for_keymaster: Waiting for Keymaster device
+[    7.525413] wait_for_keymaster: List of Keymaster HALs found:
+[    7.529148] type=1400 audit(14.480:5): avc: denied { search } for comm="android.hardwar" name="gsi" dev="mmcblk2p8" ino=20 scontext=u:r:hal_bootctl_default:s0 tcontext=u:object_r:gsi_metadata_file:s0 tclass=dir permissive=1
+[    7.531615] wait_for_keymaster: Keymaster HAL #1: SoftwareKeymasterDevice from Google SecurityLevel: SOFTWARE HAL: android.hardware.keymaster@4.1::IKeymasterDevice/default
